@@ -1,0 +1,22 @@
+import express from 'express';
+import type { Express } from 'express';
+import { API_PREFIX } from '../config/constants.js';
+import { default as auth } from '../modules/auth/auth.routes.js';
+import { errorMiddleware } from '../middleware/error.middleware.js';
+
+export function createApplication(): Express {
+    const app = express();
+
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
+    app.use(`${API_PREFIX}/auth`, auth);
+    
+    app.get('/health', (req, res) => {
+        res.status(200).json({ status: 'success', message: 'Server is healthy' });
+    });
+
+    app.use(errorMiddleware);
+
+    return app;
+}
