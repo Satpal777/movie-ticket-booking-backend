@@ -36,6 +36,20 @@
       "when": 1775991889064,
       "tag": "0004_left_typhoid_mary",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1776003940978,
+      "tag": "0005_powerful_vertigo",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1776096897904,
+      "tag": "0006_brown_william_stryker",
+      "breakpoints": true
     }
   ]
 }
