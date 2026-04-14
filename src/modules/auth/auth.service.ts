@@ -5,6 +5,7 @@ import { tokens, users } from "./auth.schema.js";
 import { AppError } from "../../utils/errors.js";
 import { createHmac, randomBytes } from "node:crypto";
 import { generateAccessToken, generateRefreshToken, generateUserVerificationToken, hashToken, verifyRefreshToken } from "../../utils/jwt.js";
+import { sendVerificationEmail } from "../../email/node-mailer.js";
 
 export const register = async ({ email, password, name }: RegisterDtoType) => {
 
@@ -39,9 +40,14 @@ export const register = async ({ email, password, name }: RegisterDtoType) => {
         throw AppError.internal("Failed to create user");
     }
 
+    try {
+        await sendVerificationEmail(email, userResult.id, rawToken);
+    } catch (err) {
+        console.error("Failed to send verification email:", err);
+    }
+
     return {
         userId: userResult.id,
-        verificationToken: rawToken,
     };
 
 };
