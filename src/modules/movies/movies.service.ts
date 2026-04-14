@@ -158,6 +158,7 @@ export const getMyBookings = async (userId: number) => {
             showTime: shows.startsAt,
             price: shows.price,
             movieTitle: movies.title,
+            movieImage: movies.image,
             screenName: screens.name,
             cinemaName: cinemas.name,
             cinemaCity: cinemas.city,

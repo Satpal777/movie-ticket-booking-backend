@@ -23,6 +23,7 @@ export const movies = pgTable('movies', {
     title:    text('title').notNull(),
     duration: integer('duration').notNull(),   
     language: text('language').notNull(),
+    image:    text('image'),
 });
 
 export const shows = pgTable('shows', {
