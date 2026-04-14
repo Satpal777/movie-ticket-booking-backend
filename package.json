@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsc-watch -b tsconfig.json --onSuccess \"node dist/index.js\"",
+    "build": "tsc -b tsconfig.json",
+    "start": "node dist/index.js",
     "up:db": "docker-compose up -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
